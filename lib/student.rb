@@ -60,7 +60,7 @@ attr_reader :id
     SQL
     DB[:conn].execute(sql).map do |row|
       Student.new(row)
-    end
+    end.first
   end
 
 end
