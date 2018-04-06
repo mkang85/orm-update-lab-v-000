@@ -41,4 +41,14 @@ attr_reader :id
     end
   end
 
+  def self.create
+    sql = <<-SQL
+    SELECT *
+    FROM students
+    SQL
+    DB[:conn].execute(sql).map do |row|
+      Student.new(self.name, self.grade)
+    end
+  end
+
 end
