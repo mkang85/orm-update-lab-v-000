@@ -33,7 +33,6 @@ attr_reader :id
       self.update
     else
     sql = <<-SQL
-    SELECT *
     INSERT INTO students (name, grade)
     VALUES (?, ?)
   SQL
