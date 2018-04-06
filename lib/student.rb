@@ -46,7 +46,7 @@ attr_reader :id
     SELECT *
     FROM students
     SQL
-    DB[:conn].execute(sql).map do |row|
+    DB[:conn].execute(sql, self.name, self.grade).map do |row|
       Student.new(self.name, self.grade)
     end
   end
