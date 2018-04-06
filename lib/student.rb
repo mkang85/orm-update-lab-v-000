@@ -58,9 +58,7 @@ attr_reader :id
     FROM students
     WHERE students.name = name
     SQL
-    DB[:conn].execute(sql).map do |row|
-      Student.new(row)
-    end.first
+    DB[:conn].execute(sql)
   end
 
 end
