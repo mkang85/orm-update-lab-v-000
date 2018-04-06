@@ -65,10 +65,15 @@ attr_reader :id
 
   def update
     sql = <<-SQL
-    INSERT INTO students
-    VALUES (?, ?)
+    UPDATE students
+    SET name = ?, album = ?
+    WHERE id = ?
     SQL
-    DB[:conn].execute(sql, self.name, self.grade)
+    DB[:conn].execute(sql, self.name, self.grade, self.id)
   end
 
+  def update
+    sql = "UPDATE songs SET name = ?, album = ? WHERE id = ?"
+    DB[:conn].execute(sql, self.name, self.album, self.id)
+  end
 end
